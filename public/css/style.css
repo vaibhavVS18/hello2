@@ -1,0 +1,41 @@
+/* update button */
+.update-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.flash {
+    position: fixed;
+    top: 12%;
+    left: 25%;
+    transform: translateX(-50%);
+    width: 50%;
+    z-index: 1200; /* Ensure it appears above other content */
+    /* margin-top: 10px; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.create-btn{
+    background-color: #330c9d !important;
+    border: none !important;
+}
+
+     .sticky-circle {
+      position: fixed; /* Fixed positioning so it stays on screen while scrolling */
+      top: 1px;      /* Adjust as needed for spacing from the top */
+      left: 10px;      /* Adjust as needed for spacing from the left */
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1050; /* Ensure it stays above other content */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sticky-circle img{
+        width: 95%;
+        /* height: 80px; */
+    }
+

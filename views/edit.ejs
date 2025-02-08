@@ -1,0 +1,69 @@
+<% layout("/layouts/boilerplate") %>
+
+<!-- <style>
+    .update-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+}
+</style> -->
+
+<body>
+  <h3 class="mt-3">Edit Info.. <%=student.roll_no%></h3>
+
+  <div class="row mt-3">
+    <div class="col-8 offset-2">
+      <form method="POST" action="/edit/<%=student.roll_no%>?_method=PUT" class="needs-validation" novalidate >
+      <!-- <form method="POST" action="/edit/<%=student.roll_no%>?_method=PUT"> -->
+        <div class="mb-3">
+          <lable for="name" class="form-label">Student Name</lable>
+          <input
+            name="student[name]"
+            value="<%=student.name%>"
+            type="text"
+            class="form-control"
+            required
+          />
+          <!-- <div class="valid-feedback">Title looks good!</div> -->
+        </div>
+
+        <div class="mb-3">
+          <lable for="mobile_no" class="form-label">Mobile no.</lable>
+          <input
+            name="student[mobile_no]"
+            value="<%=student.mobile_no%>"
+            type="number"
+            class="form-control"
+            required 
+            <%=student.mobile_no%> 
+            />
+            <!-- <div class="invalid-feedback">Please enter a short description also!</div> -->
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleSelect" class="form-label">Select an option</label>
+          <select class="form-select" id="exampleSelect" name="student[hostel_name]" aria-label="Default select example">
+            <!-- <option selected disabled>Open this select menu</option> -->
+            <option value="Bhutagni">Bhutagni</option>
+            <option value="Chitaghni">Chitaghni</option>
+            <option value="Jathragni">Jathragni</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <lable for="room_no" class="form-label">Room No.</lable>
+          <input
+            name="student[Room_no]"
+            value="<%=student.Room_no%>"
+            type="number"
+            class="form-control"
+            required 
+            <%=student.Room_no%> 
+            />
+            <!-- <div class="invalid-feedback">Please enter a short description also!</div> -->
+        </div>
+
+        <button class="btn btn-dark update-btn">Update</button>
+      </form>
+    </div>
+  </div>
+</body>

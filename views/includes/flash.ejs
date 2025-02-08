@@ -1,0 +1,141 @@
+
+<div class="flash-container">
+  <% if(successMsg && successMsg.length){ %>
+      <div class="alert alert-success alert-dismissible fade show flash" role="alert">
+          <div class="flash-message">
+              <%= successMsg %>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+  <% } %>
+
+  <% if(errorMsg && errorMsg.length){ %>
+      <div class="alert alert-danger alert-dismissible fade show flash" role="alert">
+          <div class="flash-message">
+              <%= errorMsg %>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+  <% } %>
+</div>
+
+
+
+  <% if(entryMsg && entryMsg.length){ %>
+    <div class="alert alert-info fade show entryFlash" role="alert">
+      <% let entry = JSON.parse(entryMsg)%>
+      <table id="table" class="table table-bordered table-striped custom-table">
+        <thead>
+            <tr>
+                <th>Roll No.</th>
+                <th>Name</th>
+                <th>Hostel</th>
+                <th>Room No.</th>
+                <th>Mobile No.</th>
+                <th>Destination</th>
+                <th>Leaving time</th>
+                <th>Leaving Date</th>
+                <th>Arrival time</th>
+                <th>Arrival Date</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                  <th scope="row"><%= entry.student.roll_no %></th>
+                  <th scope="row"><%= entry.student.name %></th>
+                  <td><b><%= entry.student.hostel_name %></b></td>
+                  <td><b><%= entry.student.Room_no %></b></td>
+                  <td><b><%= entry.student.mobile_no %></b></td>
+                  <td><b><%= entry.destination %></b></td>
+                  <td><b><%= entry.Leaving_time %></b></td>
+                  <td><b><%= entry.Leaving_date %></b></td>
+                  <td><b><%= entry.Arrival_time %></b></td>
+                  <td><b><%= entry.Arrival_date %></b></td>
+                </tr>
+        </tbody>
+    </table>
+    
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+<% } %>
+
+<style>
+          .flash-container {
+            position: fixed;
+            top: 20px;
+            left: 60%;
+            transform: translateX(-50%);
+            z-index: 1050;
+            width: 90%;
+            max-width: 600px;
+        }
+        .flash {
+            text-align: center;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .flash-message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+  /* Style for error and entry messages */
+  .entryFlash {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px; /* Reduce padding */
+    border-radius: 8px;
+    max-width: 90%;
+    margin: 5px auto; /* Reduce margin */
+    font-size: 14px; /* Slightly smaller text */
+    max-height: 150px; /* Limit height */
+    overflow: auto; /* Enable scrolling if needed */
+}
+
+
+/* Styling the table */
+.custom-table {
+    width: 100%;
+    max-width: 90%;
+    margin: 15px auto;
+    border-collapse: collapse;
+    background-color: white;
+    text-align: center;
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.custom-table thead {
+    background-color: #007bff;
+    color: white;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Close button alignment */
+.alert .btn-close {
+    margin-left: auto;
+}
+
+</style>

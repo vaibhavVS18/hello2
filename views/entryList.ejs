@@ -1,0 +1,150 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+    .custom-table {
+        width: 100%;
+        margin: 20px auto;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+
+    th {
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+    }
+    td, th {
+        padding: 12px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .update-btn {
+        background-color: #343a40;
+        color: white;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        font-size: 14px;
+        width: 100%;
+    }
+    .update-btn:hover {
+        background-color: #23272b;
+    }
+    .update-btn-container {
+        text-align: center;
+    }
+
+      /* Table Styling with alternating row colors and hover effect */
+  #table {
+    margin: 30px auto;
+    max-width: 100%;
+    background: #fff;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  }
+  #table thead th {
+    background: #343a40;
+    color: #fff;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  #table tbody tr {
+    background: #f9f9f9;
+    transition: background 0.2s ease;
+  }
+  #table tbody tr:hover {
+    background: #f1f1f1;
+  }
+  #table td, #table th {
+    padding: 12px;
+    text-align: center;
+  }
+  #table tbody tr:first-child td:first-child {
+    border-top-left-radius: 8px;
+  }
+  #table tbody tr:first-child td:last-child {
+    border-top-right-radius: 8px;
+  }
+  
+</style>
+    
+    <div class="container">
+        <h2 class="text-center mt-4">All Entries Table</h2>
+        
+        <div class="table-responsive">
+        <input type="text" id="searchEntry" class="form-control me-2" placeholder="Search in the table...">  
+        <table id="table" class="table table-bordered table-striped custom-table entryTable">
+            <thead>
+              <tr>
+                <th>S.no.</th>
+                <th>Roll No.</th>
+                <th>Name</th>
+                <th>Hostel</th>
+                <th>Room No.</th>
+                <th>Mobile No.</th>
+                <th>Destination</th>
+                <th>Leaving time</th>
+                <th>Leaving Date</th>
+                <th>Arrival time</th>
+                <th>Arrival Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% let cnt = 1; %>
+              <% for(entry of entries){ %>
+              <tr>
+                <th scope="row"><%= cnt %></th>
+                <td><%= entry.student.roll_no %></td>
+                <td><%= entry.student.name %></td>
+                <td><%= entry.student.hostel_name %></td>
+                <td><%= entry.student.Room_no %></td>
+                <td><%= entry.student.mobile_no %></td>
+                <td><%= entry.destination %></td>
+                <td><%= entry.Leaving_time %></td>
+                <td><%= entry.Leaving_date %></td>
+                <td><%= entry.Arrival_time %></td>
+                <td><%= entry.Arrival_date %></td>
+                <td>
+                  <% if (entry.Arrival_time) { %>
+                    <span class="badge bg-success">Entered</span>
+                  <% } else { %>
+                    <span class="badge bg-danger">Exited</span>
+                  <% } %>
+                </td>
+              </tr>
+              <% cnt++; } %>
+            </tbody>
+          </table>
+        </div>
+    </div>
+        
+      <script>
+        document.getElementById("searchEntry").addEventListener("keyup", function () {
+          let filter = this.value.toLowerCase();
+          let rows = document.querySelectorAll(".entryTable tbody tr");
+    
+          rows.forEach(row => {
+              let text = row.textContent.toLowerCase();
+              row.style.display = text.includes(filter) ? "" : "none";
+          });
+        });
+    
+      </script>
+    
+
+</body>

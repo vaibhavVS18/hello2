@@ -1,0 +1,79 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<style>
+body{
+
+  background: repeating-linear-gradient(90deg, rgba(13, 13, 13,0.09) 0px, rgba(13, 13, 13,0.09) 36px,rgba(229, 229, 229,0.09) 36px, rgba(229, 229, 229,0.09) 72px,transparent 72px, transparent 108px,rgba(163, 163, 163,0.09) 108px, rgba(163, 163, 163,0.09) 144px,rgba(21, 21, 21,0.09) 144px, rgba(21, 21, 21,0.09) 180px),repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 14px,transparent 14px, transparent 28px,rgba(0,0,0,0.08) 28px, rgba(0,0,0,0.08) 42px,transparent 42px, transparent 56px,rgba(0,0,0,0.08) 56px, rgba(0,0,0,0.08) 70px),repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 23px,transparent 23px, transparent 46px,rgba(0,0,0,0.08) 46px, rgba(0,0,0,0.08) 69px,transparent 69px, transparent 92px,rgba(0,0,0,0.08) 92px, rgba(0,0,0,0.08) 115px),repeating-linear-gradient(90deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 6px,transparent 6px, transparent 12px,rgba(0,0,0,0.04) 12px, rgba(0,0,0,0.04) 18px,transparent 18px, transparent 24px,rgba(0,0,0,0.04) 24px, rgba(0,0,0,0.04) 30px),
+                      linear-gradient(90deg, rgb(176, 44, 14),rgb(15, 30, 165));
+  background-size: cover;
+  background-blend-mode: overlay;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+}
+.video-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#backgroundVideo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  /* Additional styling for your content */
+}
+/* Styling for the overlay text */
+.overlay-text {
+  width: 85%;
+    position: absolute;
+    top: 20.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: rgb(255, 233, 212);
+    background: linear-gradient(83deg,#dbc6c6 5%,#441165,#120c65,#b87373);
+
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.overlay-text h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.overlay-text p {
+    font-size: 1.5em;
+    margin: 10px 2px 0;
+}
+
+
+</style>
+
+<body>
+    <!-- <div>
+        <p>hello</p>
+    </div> -->
+    <!-- Bootstrap CSS (Include this if not already added) -->
+<!-- 
+    <div class="video-container">
+      <iframe id="backgroundVideo" src="https://www.youtube.com/embed/nshmCXS08dY?autoplay=1&mute=1&controls=0&loop=1&playlist=nshmCXS08dY" frameborder="0" allow="autoplay; fullscreen"></iframe>
+    </div>
+     -->
+    <!-- <div class="overlay-text">
+      <h1>Explore Our College</h1>
+      <p>INDIAN INSTITUTE OF INFORMATION TECHNLOGY UNA</p>
+    </div> -->
+  
+    
+</body>

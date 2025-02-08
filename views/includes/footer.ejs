@@ -1,0 +1,113 @@
+<!-- footer.ejs -->
+<style>
+    /* Footer container with a smooth gradient */
+    .footer {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+    }
+  
+    /* Footer links styling */
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer a:hover {
+      color: #ffd700;
+    }
+  
+    /* Navigation links list */
+    .footer-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+  
+    .footer-nav ul li {
+      display: inline-block;
+    }
+  
+    /* Social Icons styling */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+  
+    .social-icons a {
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+  
+    .social-icons a:hover {
+      color: #ffd700;
+    }
+  
+    /* Horizontal divider */
+    .footer hr {
+      border: none;
+      border-top: 2px solid rgba(251, 252, 249, 0.885);
+      margin: 10px auto;
+      max-width: 90%;
+    }
+  
+    .footer p {
+      margin: 5px 0;
+    }
+  </style>
+  
+  <footer class="footer">
+    <div class="container text-center">
+      <!-- Navigation Links -->
+      <div class="footer-nav">
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <a href="/about"><i class="fa-solid fa-circle-info me-1"></i>About</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="/contact"><i class="fa-solid fa-envelope me-1"></i>Contact</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="/privacy"><i class="fa-solid fa-user-secret me-1"></i>Privacy Policy</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="/terms"><i class="fa-solid fa-file-contract me-1"></i>Terms of Service</a>
+          </li>
+        </ul>
+      </div>
+  
+      <!-- Social Media Icons (New Row) -->
+      <div class="social-icons">
+        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com/" target="_blank" aria-label="Twitter">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+      </div>
+  
+      <hr>
+  
+      <p>&copy; 2025 MySite. All rights reserved.</p>
+      <p>Made By: v@ibh@v</p>
+    </div>
+  </footer>
+  

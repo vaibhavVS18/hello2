@@ -1,0 +1,368 @@
+
+<% layout("/layouts/boilerplate.ejs") %>
+<style>
+  /* Overall Page Background with texture & gradient overlay */
+  body {
+  background: linear-gradient(120deg, #372ed7 0%, #ea400c 50%, #e5ecde 100%);
+          /* url('https://www.transparenttextures.com/patterns/asfalt-light.png'); */
+  background-image: repeating-linear-gradient(90deg, rgba(13, 13, 13,0.09) 0px, rgba(13, 13, 13,0.09) 36px,rgba(229, 229, 229,0.09) 36px, rgba(229, 229, 229,0.09) 72px,transparent 72px, transparent 108px,rgba(163, 163, 163,0.09) 108px, rgba(163, 163, 163,0.09) 144px,rgba(21, 21, 21,0.09) 144px, rgba(21, 21, 21,0.09) 180px),repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 14px,transparent 14px, transparent 28px,rgba(0,0,0,0.08) 28px, rgba(0,0,0,0.08) 42px,transparent 42px, transparent 56px,rgba(0,0,0,0.08) 56px, rgba(0,0,0,0.08) 70px),repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 23px,transparent 23px, transparent 46px,rgba(0,0,0,0.08) 46px, rgba(0,0,0,0.08) 69px,transparent 69px, transparent 92px,rgba(0,0,0,0.08) 92px, rgba(0,0,0,0.08) 115px),repeating-linear-gradient(90deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 6px,transparent 6px, transparent 12px,rgba(0,0,0,0.04) 12px, rgba(0,0,0,0.04) 18px,transparent 18px, transparent 24px,rgba(0,0,0,0.04) 24px, rgba(0,0,0,0.04) 30px),
+                      linear-gradient(90deg, rgb(176, 44, 14),rgb(15, 30, 165));
+  background-size: cover;
+  background-blend-mode: overlay;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  /* Full-page container for scanning section */
+.scan-container {
+  height: 60vh;
+  background-image: repeating-linear-gradient(90deg, rgba(13, 13, 13,0.09) 0px, rgba(13, 13, 13,0.09) 36px,rgba(229, 229, 229,0.09) 36px, rgba(229, 229, 229,0.09) 72px,transparent 72px, transparent 108px,rgba(163, 163, 163,0.09) 108px, rgba(163, 163, 163,0.09) 144px,rgba(21, 21, 21,0.09) 144px, rgba(21, 21, 21,0.09) 180px),repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 14px,transparent 14px, transparent 28px,rgba(0,0,0,0.08) 28px, rgba(0,0,0,0.08) 42px,transparent 42px, transparent 56px,rgba(0,0,0,0.08) 56px, rgba(0,0,0,0.08) 70px),repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 23px,transparent 23px, transparent 46px,rgba(0,0,0,0.08) 46px, rgba(0,0,0,0.08) 69px,transparent 69px, transparent 92px,rgba(0,0,0,0.08) 92px, rgba(0,0,0,0.08) 115px),repeating-linear-gradient(90deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 6px,transparent 6px, transparent 12px,rgba(0,0,0,0.04) 12px, rgba(0,0,0,0.04) 18px,transparent 18px, transparent 24px,rgba(0,0,0,0.04) 24px, rgba(0,0,0,0.04) 30px),
+                      linear-gradient(90deg, rgb(222, 91, 62),rgb(67, 83, 225));
+  /* background: #fff; Lighter, more transparent white */
+  background-size: cover;
+  background-blend-mode: overlay;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 15px;
+  /* Apply a uniform shadow on all sides */
+  /* box-shadow: 0 4px 30px rgba(255, 254, 254, 0.852); */
+  padding: 30px;
+  margin-top: 6.5px;
+}
+
+
+  /* Video Container Styling */
+  #webcam-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  #webcam {
+    /* background-image:  url("https://www.transparenttextures.com/patterns/dark-fish-skin.png"),repeating-linear-gradient(90deg, rgba(13, 13, 13,0.09) 0px, rgba(13, 13, 13,0.09) 36px,rgba(229, 229, 229,0.09) 36px, rgba(229, 229, 229,0.09) 72px,transparent 72px, transparent 108px,rgba(163, 163, 163,0.09) 108px, rgba(163, 163, 163,0.09) 144px,rgba(21, 21, 21,0.09) 144px, rgba(21, 21, 21,0.09) 180px),repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 14px,transparent 14px, transparent 28px,rgba(0,0,0,0.08) 28px, rgba(0,0,0,0.08) 42px,transparent 42px, transparent 56px,rgba(0,0,0,0.08) 56px, rgba(0,0,0,0.08) 70px),repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 23px,transparent 23px, transparent 46px,rgba(0,0,0,0.08) 46px, rgba(0,0,0,0.08) 69px,transparent 69px, transparent 92px,rgba(0,0,0,0.08) 92px, rgba(0,0,0,0.08) 115px),repeating-linear-gradient(90deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 6px,transparent 6px, transparent 12px,rgba(0,0,0,0.04) 12px, rgba(0,0,0,0.04) 18px,transparent 18px, transparent 24px,rgba(0,0,0,0.04) 24px, rgba(0,0,0,0.04) 30px), 
+     linear-gradient(45deg, rgb(52, 130, 190),rgb(223, 77, 75)); */
+    background-color: rgb(178, 188, 247);
+     background-size: cover;
+    width: 80%;
+    max-width: 600px;
+    height: auto;
+    border: 4px solid #200e3b;
+    transform: scale(1.10);
+    border-radius: 10px;
+    box-shadow: 0 15px 32px rgba(26, 2, 87, 0.2);
+  }
+
+  /* Scan Button Styling with Gradient & Transition */
+  .scan-btn {
+    background: repeating-linear-gradient(90deg, rgba(13, 13, 13,0.09) 0px, rgba(13, 13, 13,0.09) 36px,rgba(229, 229, 229,0.09) 36px, rgba(229, 229, 229,0.09) 72px,transparent 72px, transparent 108px,rgba(163, 163, 163,0.09) 108px, rgba(163, 163, 163,0.09) 144px,rgba(21, 21, 21,0.09) 144px, rgba(21, 21, 21,0.09) 180px),repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 14px,transparent 14px, transparent 28px,rgba(0,0,0,0.08) 28px, rgba(0,0,0,0.08) 42px,transparent 42px, transparent 56px,rgba(0,0,0,0.08) 56px, rgba(0,0,0,0.08) 70px),repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 23px,transparent 23px, transparent 46px,rgba(0,0,0,0.08) 46px, rgba(0,0,0,0.08) 69px,transparent 69px, transparent 92px,rgba(0,0,0,0.08) 92px, rgba(0,0,0,0.08) 115px),repeating-linear-gradient(90deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 6px,transparent 6px, transparent 12px,rgba(0,0,0,0.04) 12px, rgba(0,0,0,0.04) 18px,transparent 18px, transparent 24px,rgba(0,0,0,0.04) 24px, rgba(0,0,0,0.04) 30px),
+                  linear-gradient(90deg, rgb(234, 90, 58),rgb(53, 71, 236));
+    transform: scale(1.10);
+    color: #fff;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-size: 18px;
+  }
+  /* .scan-btn i{
+    color: rgb(34, 7, 126);
+  } */
+  .scan-btn:hover {
+    background: repeating-linear-gradient(90deg, rgba(13, 13, 13,0.09) 0px, rgba(13, 13, 13,0.09) 36px,rgba(229, 229, 229,0.09) 36px, rgba(229, 229, 229,0.09) 72px,transparent 72px, transparent 108px,rgba(163, 163, 163,0.09) 108px, rgba(163, 163, 163,0.09) 144px,rgba(21, 21, 21,0.09) 144px, rgba(21, 21, 21,0.09) 180px),repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 14px,transparent 14px, transparent 28px,rgba(0,0,0,0.08) 28px, rgba(0,0,0,0.08) 42px,transparent 42px, transparent 56px,rgba(0,0,0,0.08) 56px, rgba(0,0,0,0.08) 70px),repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 23px,transparent 23px, transparent 46px,rgba(0,0,0,0.08) 46px, rgba(0,0,0,0.08) 69px,transparent 69px, transparent 92px,rgba(0,0,0,0.08) 92px, rgba(0,0,0,0.08) 115px),repeating-linear-gradient(90deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 6px,transparent 6px, transparent 12px,rgba(0,0,0,0.04) 12px, rgba(0,0,0,0.04) 18px,transparent 18px, transparent 24px,rgba(0,0,0,0.04) 24px, rgba(0,0,0,0.04) 30px),
+                linear-gradient(90deg, rgb(176, 44, 14),rgb(15, 30, 165));
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  }
+
+  #result{
+    color:#f9f9f9;
+  }
+  /* Popup Destination Styling */
+  .top-popup {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    z-index: 1000;
+    border-radius: 10px;
+    animation: fadeIn 0.4s ease-in-out;
+  }
+  .popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  }
+  .close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .close:hover {
+    color: #000;
+  }
+  #otherDestination {
+    display: none;
+    margin-top: 10px;
+  }
+
+  /* Search input styling */
+  /* #searchStudent {
+    max-width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.2s ease;
+  } */
+  /* #searchStudent:focus {
+    margin: 20px auto;
+    border-color: #ff6f61;
+    box-shadow: 0 0 5px rgba(255,111,97,0.5);
+  } */
+
+  /* Table Styling with alternating row colors and hover effect */
+  #table {
+    margin: 30px auto;
+    max-width: 100%;
+    background: #fff;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  }
+  #table thead th {
+    background: #343a40;
+    color: #fff;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  #table tbody tr {
+    display: table-row;
+    background: #f9f9f9;
+    transition: background 0.2s ease;
+  }
+  #table tbody tr:hover {
+    background: #f1f1f1;
+  }
+  #table td, #table th {
+    padding: 12px;
+    text-align: center;
+  }
+  #table tbody tr:first-child td:first-child {
+    border-top-left-radius: 8px;
+  }
+  #table tbody tr:first-child td:last-child {
+    border-top-right-radius: 8px;
+  }
+  
+  /* Fade in animation for popup */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -10%); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+  }
+  #correct{
+    color:#0b6b0c;
+  }
+  #wrong{
+    color:#6e0e0e;
+  }
+  #correct-box{
+    color:#0b6b0c;
+    background-color: #edf8eb;
+  }
+  #wrong-box{
+    color:#6e0e0e;
+    background-color: #f5d2d3;
+  }
+
+  /* toggle button */
+  /* Ensure the flex container spans the full width above the table */
+.d-flex.justify-content-between.align-items-center.mb-3 {
+  width: 100%;
+}
+
+/* Custom styling for the toggle label */
+.toggle-label {
+  font-weight: bold;
+  color: #ffffff; /* Change as needed for contrast */
+}
+
+/* Optionally, style the switch when checked */
+.form-check-input:checked {
+  background-color: #4caf50;
+  border-color: #4caf50;
+}
+
+/* Adjust spacing/margins if needed */
+.me-3 {
+  margin-right: 1rem !important;
+}
+
+</style>
+
+<body>
+  <!-- Destination Selection Popup (Hidden Initially) -->
+  <div id="topPopup" class="top-popup">
+    <div class="popup-content popup-container">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <h4 id="dest">VERIFY your Roll No.</h3>
+
+      <div id="wrong-box">
+        <h6 id="wrong">If Scanned Roll no. is not correct</h6>
+        <p class="moving-text">Close this block and ReScan</p>
+      </div>
+
+      <div id="correct-box">
+        <h6 id="correct">If Scanned Roll no. is correct</h6>
+        <form id="destinationForm">
+          <label for="destination">Choose a Destination:</label>
+        </form>
+      </div>
+      <select id="destination" name="destination" class="form-select" required>
+        <option value="JJ Mod">JJ Mod</option>
+        <option value="una market">una market</option>
+        <option value="Gym">Gym</option>
+        <option value="Medical">Medical</option>
+      </select>
+      <br>
+      <button class="btn btn-success" onclick="submitDestination()">Submit</button>
+
+    </div>
+  </div>
+      
+  <div class="container d-flex justify-content-center align-items-center scan-container">
+    <div class="text-center">
+      <h1 class="mb-1">SCAN YOUR ID card</h1>
+      <p class="mb-4">Click "Start Scanning" to capture and scan your ID until the Entry is successful:</p>
+      
+      <!-- Video Container (Initially Hidden) -->
+      <div id="webcam-container" class="d-flex camera">
+        <video id="webcam" autoplay></video>
+      </div>
+  
+      <!-- Start Scanning Button -->
+      <button class="scan-btn mt-4" onclick="startScanning()">
+        <i class="fa-solid fa-camera"></i> Start Scanning
+      </button>
+    </div>
+  </div>
+  
+  <div id="result"></div>
+
+<% if(currUser===process.env.OWNER || currUser===process.env.GUARD){ %>
+
+<div class="table-responsive">
+
+  <div class="d-flex justify-content-between align-items-center mb-1 mt-2">
+    <!-- Search Input on the left -->
+    <div class="flex-grow-1 me-3">
+      <input type="text" id="searchToday" class="form-control" placeholder="Search in the table...">
+    </div>
+    <!-- Toggle Switch on the right -->
+    <div class="form-check form-switch">
+      <label class="form-check-label toggle-label me-2" for="flexSwitch">Toggle Arrival Rows</label>
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitch">
+    </div>
+  </div>
+  
+      
+<table id="table" class="table table-bordered table-striped custom-table todayTable">
+    <thead>
+      <tr>
+        <th>S.no.</th>
+        <th>Roll No.</th>
+        <th>Name</th>
+        <th>Hostel</th>
+        <th>Room No.</th>
+        <th>Mobile No.</th>
+        <th>Destination</th>
+        <th>Leaving time</th>
+        <th>Leaving Date</th>
+        <th>Arrival time</th>
+        <th>Arrival Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% let cnt = 1; %>
+      <% for(entry of entries){ %>
+      <tr>
+        <th scope="row"><%= cnt %></th>
+        <td><b><%= entry.student.roll_no %></b></td>
+        <td><%= entry.student.name %></td>
+        <td><%= entry.student.hostel_name %></td>
+        <td><%= entry.student.Room_no %></td>
+        <td><%= entry.student.mobile_no %></td>
+        <td><%= entry.destination %></td>
+        <td><%= entry.Leaving_time %></td>
+        <td><%= entry.Leaving_date %></td>
+        <td><%= entry.Arrival_time %></td>
+        <td><%= entry.Arrival_date %></td>
+        <td>
+          <% if (entry.Arrival_time) { %>
+            <span class="badge bg-success">Entered</span>
+          <% } else { %>
+            <span class="badge bg-danger">Exited</span>
+          <% } %>
+        </td>
+      </tr>
+      <% cnt++; } %>
+    </tbody>
+  </table>
+</div>
+<%}%>
+
+
+  <script>
+    document.querySelector("#searchToday").addEventListener("keyup", function () {
+      let filter = this.value.toLowerCase();
+      let rows = document.querySelectorAll(".todayTable tbody tr");
+
+      rows.forEach(row => {
+          let text = row.textContent.toLowerCase();
+          row.style.display = text.includes(filter) ? "" : "none";
+      });
+    });
+    document.querySelector("#searchToday2").addEventListener("keyup", function () {
+      let filter = this.value.toLowerCase();
+      let rows = document.querySelectorAll(".todayTable tbody tr");
+
+      rows.forEach(row => {
+          let text = row.textContent.toLowerCase();
+          row.style.display = text.includes(filter) ? "" : "none";
+      });
+    });
+
+
+document.querySelector("#flexSwitch").addEventListener("click", () => {
+  // Select all rows in the table body
+  let rows = document.querySelectorAll(".table-responsive table tbody tr");
+  for(row of rows){
+    // Assume arrival time is in the 10th column (index 9)
+    let arrivalCell = row.cells[9];
+    if (arrivalCell) {
+      // Check if arrival time is present (nonempty text)
+      let hasArrival = arrivalCell.textContent.trim() !== "";
+      if (hasArrival) {
+        // Toggle the row: if hidden, show it; if visible, hide it.
+        row.style.display = (row.style.display === "none") ? "table-row" : "none";
+      }
+    }
+  }
+});
+
+  </script>
+</body>

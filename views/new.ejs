@@ -1,0 +1,95 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<body>
+  <h3 class="mt-3">Add a new Student..</h3>
+  <!-- 'mt-3' is a custom class to give margin of 3 from top-->
+
+  <div class="row mt-3">
+    <div class="col-8 offset-2">
+      <form method="POST" action="/addStudent" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <lable for="roll_no" class="form-label">Roll No.</lable>
+          <input
+            name="student[roll_no]"
+            placeholder="enter title"
+            type="number"
+            class="form-control"
+            required
+          />
+        <div class="invalid-feedback">Please enter a valid Roll no.</div>
+        </div>
+
+        <div class="mb-3">
+          <lable for="name" class="form-label">Name</lable>
+          <input
+            name="student[name]"
+            placeholder="enter name"
+            type="text"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Name looks good!</div>
+        </div>
+
+        <!-- <div class="mb-3">
+          <lable for="image" class="form-label">Image</lable>
+          <input
+            name="listing[image]"
+            placeholder="enter image URL/Link"
+            type="text"
+            class="form-control"
+          />
+        </div> -->
+        <!-- <div class="mb-3">
+          <lable for="image" class="form-label">Image</lable>
+          <input
+            name="listing[image]"
+            type="file"
+            class="form-control"
+            required
+          />
+        </div> -->
+        
+
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <lable for="mobile_no" class="form-label">Mobile No.</lable>
+            <input
+              name="student[mobile_no]"
+              placeholder="enter Mobile no."
+              type="number"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Please enter a valid Mobile no.!</div>
+          </div>
+          <br />
+
+          <div class="mb-3">
+            <label for="hostel_name" class="form-label">Select an option</label>
+            <select class="form-select" id="exampleSelect" name="student[hostel_name]" aria-label="Default select example">
+              <!-- <option selected disabled>Open this select menu</option> -->
+              <option value="Bhutagni">Bhutagni</option>
+              <option value="Chitaghni">Chitaghni</option>
+              <option value="Jathragni">Jathragni</option>
+            </select>
+          </div>
+    
+
+        <div class="mb-3">
+          <lable for="Room_no" class="form-label">Room no.</lable>
+          <input
+            name="student[Room_no]"
+            placeholder="enter Room no."
+            type="number"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Please enter valid room no.</div>
+        </div>
+
+        <button class="btn btn-dark create-btn">Create</button>
+      </form>
+    </div>
+  </div>
+</body>
