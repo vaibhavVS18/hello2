@@ -117,10 +117,13 @@ app.use((req,res,next)=>{
 
 // 80646328450-o10m6ac6pjmd2s3c64fri26el1hi1960.apps.googleusercontent.com
 //...................................................
-let port =3000;
-app.listen(port,'0.0.0.0', ()=>{
+let port =process.env.port || 3000;
+app.listen(port,, ()=>{
     console.log(`app is listening on port${port}`);
 }); 
+
+// Health check route for Render
+app.get("/ping", (req, res) => res.send("pong"));
 
 app.get("/",(req,res)=>{
     // console.log("home route");
